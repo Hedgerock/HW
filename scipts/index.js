@@ -1,72 +1,84 @@
-const userForm = document.forms.userForm;
-const btn = userForm.sendBtn;
-const fields = userForm.fields.elements;
-const windowEl = document.querySelector('.window');
+const selectValues = document.forms.selectValues;
+const select = selectValues.selectTag;
+const selectInput = selectValues.newOption;
+const selectBtn = selectValues.submitBtn;
 
-const isValid = {
-    name: false,
-    age: false,
-};
+const tagForm = document.forms.tagSpecification;
+const tagFieldSet = tagForm.fields.elements;
+const tagBtn = tagForm.initDomEl;
 
-inputsTypingValidation(fields, isValid);
-
-
-userForm.onsubmit = function(event) {
-    event.preventDefault();
-
-    const arrValidator = objectValuesToArr(isValid);
-
-    if (arrValidator.includes(false)) {
-        windowEl.textContent = 'Form is not ready for submit';
-    } else {
-        windowEl.textContent = 'Form submited :)';
-    }
+selectBtn.onclick = function() {
+    initNewSelectEl(selectValues, selectInput, select);
 }
 
-function inputsTypingValidation(inputs, obj) {
-    for (let field of inputs) {
-        field.oninput = function() {
-            const value = this.value;
-            const fieldName = field.name;
+tagBtn.onclick = function() {
+    initDomEL();
+}
 
-            if (value.trim().length >= 8) {
-                field.parentElement.removeAttribute('class');
-                field.parentElement.removeAttribute('data-info');
-                obj[fieldName] = true;
-            } else {
-                field.parentElement.className="error";
-                field.parentElement.setAttribute('data-info', `For [${fieldName}] should be a minimum 8 characters`);
-                obj[fieldName] = false;
-            }
-            updateButtonStyle(obj, btn);
+function initNewSelectEl(form ,input, select) {
+    let inputValue = input.value;
+    const booleanValue = sameTagsValidation(inputValue);
+    const field = form.selectFields;
+
+    if(inputValue.trim().length === 0 || !isNaN(inputValue)) {
+        field.className = "error";
+        field.setAttribute('data-info', `input is empty or has unacceptable value`)
+        return
+    } else if (inputValue.trim().length >= 20) {
+        field.className = "error";
+        field.setAttribute('data-info', `input is more than 20 characters`)
+        return;
+    } else if (!booleanValue) {
+        field.className = "error";
+        field.setAttribute('data-info', `input has already been added`);
+        return;
+    }
+    const newSelect = new Option(inputValue.toLowerCase(), inputValue.toLowerCase());
+    
+    select.append(newSelect);
+    field.removeAttribute('class');
+    field.removeAttribute('data-info');
+    input.value = '';
+}
+
+function initDomEL() {
+    const parentEl = document.querySelector('.window');
+    const options = select.options;
+    const index = select.selectedIndex;
+    const el = document.createElement(options[index].label);
+    const title = document.createElement('h4');
+    const content = document.createElement('p');
+
+    if (tagFieldSet.tagClass.value.trim().length > 0) {
+        el.className = `new-element new-element_${tagFieldSet.tagClass.value}`;
+    } else {
+        el.className = 'new-element';
+    }
+
+    content.className = 'new-element__content';
+    content.textContent = tagFieldSet.contentValue.value;
+
+    title.className = 'new-element__title';
+    title.textContent = options[index].label
+
+    parentEl.append(el);
+    el.append(title, content);
+
+    tagFieldSet.tagClass.value = '';
+    tagFieldSet.contentValue.value = '';
+}
+
+
+function sameTagsValidation(value) {
+    const options = select.options;
+    let check = true;
+
+    for (let i = 0; i < options.length; i++) {
+        if (options[i].label == value.trim().toLowerCase()) {
+            check = false;
+            break;
         }
     }
+
+    return check;
 }
-
-function updateButtonStyle(obj, button) {
-    const arrVal = objectValuesToArr(obj);
-    if (!arrVal.includes(false)) {
-        button.classList.add('valid');
-    } else {
-        button.removeAttribute('class');
-    }
-}
-
-function objectValuesToArr(obj) {
-    return Object.values(obj);
-}
-
-
-//Solution in classroom
-/* for (let i = 0; i < fields.length; i++) {
-    fields[i].oninput = function() {
-        const value = this.value;
-        const fieldName = fields[i].name;
-        if (value.length >= 5) {
-            console.log(`${fieldName} is valid`);
-        } else {
-            console.log(`${fieldName} is not valid`);
-            isValid[fieldName] = true;
-        }
-    }
-} */
