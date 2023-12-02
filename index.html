@@ -8,50 +8,10 @@
     <title>Homework</title>
 </head>
 <body>
-    <div class="container">
-        <form class="form form_select" name="selectValues" action = "#">
-            <label>
-                select Tag for new element:
-                <select name="selectTag">
-                    <option value="0">div</option>
-                    <option value="1">p</option>
-                </select>
-            </label>
+    <div class="container"></div>
 
-            <fieldset name="selectFields">
-                <label name = "newTagLabel">
-                    new Tag:
-                    <input type="text" name="newOption" placeholder="enter new TAG">
-                </label>
-            </fieldset>
-
-            <button type="button" class="form__btn form__btn_first" name = "submitBtn">Create new TAG</button>
-        </form>
-
-
-        <form class="form" name="tagSpecification" action = "#">
-
-            <fieldset name="fields">
-
-                <label>
-                    class:
-                    <input type="text" class="form__input" name="tagClass">
-                </label>
-
-                <label>
-                    content:
-                    <textarea name="contentValue"></textarea>
-                </label>
-
-            </fieldset>
-
-            <button type = "button" class="form__btn form__btn_second" name="initDomEl">Create new DOM element</button>
-
-        </form>
-
-    </div>
-
-    <div class="window"></div>
+    <script src="./scipts/content.js"></script>
+    <script src="./scipts/functions.js"></script>
     <script src="./scipts/index.js"></script>
 </body>
 </html>
