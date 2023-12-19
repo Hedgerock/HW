@@ -1,0 +1,18 @@
+@media (max-width: 1010px) {
+    .products {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 650px) {
+    .product-description {
+        width: 480px;
+        height: 600px;
+    }
+}
+
+@media (max-width: 550px) {
+    body {
+        min-width: 550px;
+    }
+}

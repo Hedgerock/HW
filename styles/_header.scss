@@ -1,0 +1,18 @@
+.header {
+    @include flex(flex-end);
+
+    padding: 2rem 0;
+}
+
+.menu {
+    @include flex(flex-start);
+
+    margin-right: 1.5rem;
+
+    &-element {
+
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    }
+}

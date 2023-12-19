@@ -1,15 +1,21 @@
-const container = document.querySelector('.container');
+import { renderProduct } from "./render/renderProduct.js";
+import { createProductEl } from "./render/renderSingleProduct.js";
+import { products } from "./data/products.js";
 
-contentForm(container);
+products.forEach(item => {renderProduct('.products', item)});
 
-initRadioBtns();
+const images = document.querySelectorAll('.product__img');
 
-initSendFormBtn();
+images.forEach(image => {
+    image.onclick = function() {
+        const parent = this.closest('.product');
+        const id = parent.dataset.id;
+        const element = products.find(product => product.id == id);
 
-const btn = document.querySelector('.form-btn');
+        if (!element) {
+            return
+        }
 
-btn.onclick = function(e) {
-    e.preventDefault();
-
-    initFinalForm();
-}
+        createProductEl(element);
+    }
+});
