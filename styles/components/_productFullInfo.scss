@@ -40,14 +40,15 @@
     overflow: auto;
 }
 
-.product-layout {
+.product-layout,
+.cart-layout {
     position: absolute;
     top: 0;
     left: 0;
     width: 100lvw;
     height: 100lvh;
 
-    background: linear-gradient(rgba(0,0,0, .5));
+    background: rgba(0,0,0, .5);
 }
 
 .product-image {

@@ -1,4 +1,6 @@
-export const cart = JSON.parse(localStorage.getItem('cartValue')) || [];
+import { cartRender, renderBtn, addToCartProducts } from "./cartUtils/cartUtils.js";
+
+export const cart = JSON.parse(localStorage.getItem('cartValue')) || {};
 
 export const renderProduct = (selector, data) => {
     const parent = document.querySelector(selector);
@@ -36,50 +38,6 @@ export const renderProduct = (selector, data) => {
 
     cartRender();
     renderBtn();
-}
-
-export function addToCartProducts() {
-    const parent = this.closest('.product');
-
-    const id = parent.dataset.id;
-    const index = cart.indexOf(id);
-
-    index !== -1 
-    ? cart.splice(index, 1)
-    : cart.push(id);
-
-    saveCart();
-    renderBtn();
-    cartRender();
-}
-
-function cartRender() {
-    const totalInCart = document.querySelector('.cart__total-product');
-    const savedCartValue = JSON.parse(localStorage.getItem('cartValue')) || [];
-
-    if (!cart.length) {
-        totalInCart.textContent = '';
-        return;
-    }
-    
-    totalInCart.textContent = savedCartValue.length;
-}
-
-export function renderBtn() {
-    const btns = document.querySelectorAll('.product__add-to-cart');
-
-    btns.forEach(btn => {
-        const parent = btn.closest('.product');
-        const id = parent.dataset.id;
-
-        cart.includes(id) ? btn.textContent = 'Remove From Cart' : btn.textContent = 'Add to Cart'
-    })
-}
-
-function saveCart() {
-    const currentCart = JSON.stringify(cart);
-
-    localStorage.setItem('cartValue', currentCart);
 }
 
 console.log(cart);

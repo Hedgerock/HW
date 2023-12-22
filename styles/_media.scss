@@ -4,6 +4,55 @@
     }
 }
 
+@media (max-width: 1000px) {
+    .amount-box {
+        width: 25%;
+        left: 75%;
+    }
+}
+
+@media (max-width: 850px) {
+    .container-cart, 
+    .cart-layout {
+        min-width: 450px;
+    }
+
+    .cart-product {
+        flex-direction: column;
+        position: relative;
+
+        &__title {
+            margin: 1rem 0;
+        }
+    }
+
+    .cart-current-products-count {
+        width: 65%;
+        justify-content: space-evenly;
+    }
+
+    .cart-products__total-price {
+        width: initial;
+        @include absolutePosition(50%, 90%);
+        transform: translateY(-50%);
+    }
+
+    .cart-products__remove-product {
+        @include absolutePosition(5px, 95%);
+    }
+
+    .amount-box {
+        width: 100%;
+        left: 0;
+        border: none;
+        border-top: 1px solid grey;
+
+        &__confirm-btn {
+            width: 100%;
+        }
+    }
+}
+
 @media (max-width: 650px) {
     .product-description {
         width: 480px;

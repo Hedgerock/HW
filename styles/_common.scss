@@ -31,4 +31,19 @@ button {
     margin: 0 auto;
 
     padding: 0 2.5rem;
+
+    &_cart {
+        @include flex(center, flex-start);
+        flex-direction: column;
+
+        width: 95%;
+        min-height: 450px;
+
+        background: white;
+        padding: 3rem 1rem 2rem 1rem;
+
+        @include absolutePosition(50%, 50%);
+        transform: translate(-50%, -50%);
+        z-index: 100;
+    }
 }

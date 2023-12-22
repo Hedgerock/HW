@@ -16,3 +16,18 @@
         }
     }
 }
+
+.cart {
+    width: 120px;
+
+    &-button {
+        font-size: 1.5rem;
+    
+        color: #3838b3;
+    
+        border: 1px solid rgb(113, 113, 184);
+    
+        padding: .4rem;
+        border-radius: 50%;
+    }
+}

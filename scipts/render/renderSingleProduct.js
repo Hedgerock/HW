@@ -1,4 +1,4 @@
-import { addToCartProducts, renderBtn } from "./renderProduct.js";
+import { addToCartProducts, renderBtn } from "./cartUtils/cartUtils.js";
 
 export const createProductEl = (element) => {
     const body = document.body;
@@ -70,7 +70,7 @@ export const createProductEl = (element) => {
 }
 
 
-function removeDomComponents () {
+export function removeDomComponents () {
     const arr = [...arguments];
     arr.forEach(component => {component.remove()});
 }
