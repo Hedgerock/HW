@@ -485,10 +485,6 @@ button {
   }
 }
 @media (max-width: 850px) {
-  .container-cart,
-  .cart-layout {
-    min-width: 450px;
-  }
   .cart-product {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -508,8 +504,8 @@ button {
   .cart-products__total-price {
     width: initial;
     position: absolute;
-    top: 50%;
-    left: 90%;
+    top: 25px;
+    left: 10px;
     bottom: initial;
     right: initial;
     -webkit-transform: translateY(-50%);
@@ -518,10 +514,13 @@ button {
   }
   .cart-products__remove-product {
     position: absolute;
-    top: 5px;
-    left: 95%;
+    top: 0;
+    left: 85%;
     bottom: initial;
     right: initial;
+  }
+  .cart-current-products-count__current-value {
+    margin: initial;
   }
   .amount-box {
     width: 100%;
@@ -534,13 +533,41 @@ button {
   }
 }
 @media (max-width: 650px) {
+  .cart {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+  }
+  .cart__total-product {
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    margin-left: 0.3rem;
+  }
+  .menu {
+    display: none;
+  }
+  .main__title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
   .product-description {
-    width: 480px;
+    width: 95%;
     height: 600px;
   }
+  .product-image__picture {
+    width: 100%;
+    max-width: initial;
+  }
 }
-@media (max-width: 550px) {
+@media (max-width: 320px) {
   body {
-    min-width: 550px;
+    min-width: 320px;
   }
 }/*# sourceMappingURL=main.css.map */
