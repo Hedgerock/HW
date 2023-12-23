@@ -451,6 +451,7 @@ button {
   left: 0;
   width: 100lvw;
   height: 100lvh;
+  z-index: 20;
   background: rgba(0, 0, 0, 0.5);
 }
 
