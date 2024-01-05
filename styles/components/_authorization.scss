@@ -1,0 +1,18 @@
+.authorization-process {
+    @include flex;
+
+    font-size: 1.6rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid silver;
+    padding: .4rem;
+    
+    &_login {
+        color: #7272c5;
+    }
+
+    &_logout {
+        color: #52a152;
+    }
+}

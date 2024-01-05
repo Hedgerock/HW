@@ -3,9 +3,11 @@
 @import "./common";
 
 @import "./header";
+@import "./authorization";
 @import "./mainPart";
 
 @import "./components/cart";
+@import "./components/authorization";
 @import "./components/productFullInfo";
 
 @import "./media";

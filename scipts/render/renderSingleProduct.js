@@ -2,6 +2,7 @@ import { addToCartProducts, renderBtn } from "./cartUtils/cartUtils.js";
 
 export const createProductEl = (element) => {
     const body = document.body;
+    const cart = document.querySelector('.cart');
 
     const elementBlock = document.createElement('div');
     const elementLayout = document.createElement('div');
@@ -40,9 +41,9 @@ export const createProductEl = (element) => {
 
     elementBlockPicture.className = 'product-image__picture';
 
-    const img = element.img ? element.img : 'noImg.jpg';
+    const img = element.img ? element.img : './img/noImg.jpg';
 
-    elementBlockPicture.setAttribute('src', `./img/${img}`);
+    elementBlockPicture.setAttribute('src', `${img}`);
     elementBlockPicture.setAttribute('alt', '');
 
     elementPriceBlock.className = 'product__price-block product__price-block_edited';
@@ -52,6 +53,7 @@ export const createProductEl = (element) => {
 
     elementBtn.className = 'product__add-to-cart';
     elementBtn.textContent = 'Add To Cart';
+    !cart ? elementBtn.setAttribute('disabled', '') : elementBtn.removeAttribute('disabled');
     elementBtn.onclick = addToCartProducts;
     
     elementFullDescription.className = 'product-description__paragraph';

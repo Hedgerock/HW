@@ -9,13 +9,13 @@ export function renderProductsInCart(parentEl) {
     const filteredProducts = products
     .filter(item => arr.includes(item.id.toString()))
     .map((item) => {
-        const img = item.img ? item.img : 'noImg.jpg'
+        const img = item.img ? item.img : './img/noImg.jpg'
         const decrAttr = cart[item.id] == 1 ? 'disabled' : '';
         const incrAttr = cart[item.id] >= 10 ? 'disabled' : '';
         return `
         <div class = "cart-product" data-id = ${item.id}>
             <div class= "cart-product-img">
-                <img class="cart-product-img__picture" src = './img/${img}' alt = "">
+                <img class="cart-product-img__picture" src = '${img}' alt = "">
             </div>
             <h3 class = "cart-product__title">${item.title}</h3>
             <div class = "cart-current-products-count">

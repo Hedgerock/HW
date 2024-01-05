@@ -1,25 +1,19 @@
-import { renderProduct } from "./render/renderProduct.js";
-import { createProductEl } from "./render/renderSingleProduct.js";
+import { renderMenu } from "./render/renderMenu.js";
+import { menuConfig } from "./configs/menuConfig.js";
+import { menuParts } from "./parts/menuParts.js";
+import { renderLogin } from "./render/renderLogin.js";
+import { authorizationParts } from "./parts/authorizationParts.js";
 import { renderCartContent } from "./render/renderCart.js";
-import { products } from "./data/products.js";
+import { authorizationField } from "./authorization/authorizationField.js";
 
-products.forEach(item => {renderProduct('.products', item)});
+renderMenu(menuConfig, menuParts);
+renderLogin(authorizationParts);
 
-const images = document.querySelectorAll('.product__img');
+const loginBtn = document.querySelector('.authorization-process_login')
+loginBtn.onclick = function(e) {
+    e.preventDefault();
+    authorizationField();
+}
+
 const cartBtn = document.querySelector('.cart-button');
-
 cartBtn.onclick = renderCartContent;
-
-images.forEach(image => {
-    image.onclick = function() {
-        const parent = this.closest('.product');
-        const id = parent.dataset.id;
-        const element = products.find(product => product.id == id);
-
-        if (!element) {
-            return
-        }
-
-        createProductEl(element);
-    }
-});

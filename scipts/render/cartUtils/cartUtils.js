@@ -17,6 +17,10 @@ export function addToCartProducts() {
 export function cartRender() {
     const totalInCart = document.querySelector('.cart__total-product');
 
+    if(!totalInCart) {
+        return;
+    }
+
     const totalAmount = Object.values(cart).reduce((acc, item) => acc + item, 0);
 
     if (totalAmount == 0) {

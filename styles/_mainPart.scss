@@ -6,8 +6,11 @@
 }
 
 .products {
-    @include flex(space-between);
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+
+    padding-bottom: 50px;
 }
 
 .product {
@@ -17,6 +20,7 @@
     border: 1px solid silver;
     padding: 1rem;
     margin: 5px;
+    position: relative;
 
     &__img {
         width: 100%;
@@ -81,6 +85,12 @@
         &:hover {
             background: orange;
             color: orangered;
+        }
+
+        &:disabled {
+            background: silver;
+            color: white;
+            pointer-events: none;
         }
 
         &:active {
