@@ -32,7 +32,9 @@ delElBtn.onclick = function() {
     checkbox.forEach(item => {
         const parent = item.parentElement;
         const id = parent.dataset.id;
-        const index = products.indexOf(id);
+        const idNum = Number(id);
+        const index = products.findIndex(product => product.id === idNum);
+
 
         if (item.checked) {
             parent.remove();
